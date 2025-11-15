@@ -33,7 +33,7 @@ const topicDetails = {
         color: "purple",
         shortName: "Hobbies",
         description: "No meu tempo livre [...].",
-        details: "Detalhes..."
+        details: 
     }
 };
 
