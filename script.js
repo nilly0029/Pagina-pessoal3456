@@ -1,66 +1,62 @@
-// ELEMENTOS
-const links = document.querySelectorAll(".nav-link");
-const content = document.getElementById("content-container");
-const modalOverlay = document.getElementById("topic-modal-overlay");
-const modalContent = document.getElementById("topic-modal-content");
-const backToTop = document.getElementById("back-to-top-btn");
+// =============================
+// MENU INTERATIVO (ROLAGEM SUAVE)
+// =============================
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
 
-// CONTEÚDOS DAS PÁGINAS
-const pages = {
-    home: `
-        <h1>Bem-vinda, Nicolly!</h1>
-        <p>Este é o início do seu site totalmente responsivo e funcional.</p>
-    `,
+        const section = document.querySelector(link.getAttribute("href"));
+        const topPosition = section.offsetTop - 80;
 
-    profile: `
-        <h1>Perfil</h1>
-        <p>Seu perfil personalizável com informações sobre você.</p>
-    `,
-
-    contact: `
-        <h1>Contato</h1>
-        <p>Email: <a href="mailto:nicolly.remeniuk@escola.pr.gov.br">Enviar email</a></p>
-        <p>WhatsApp: <a href="https://wa.me/5541997765528" target="_blank">Clique aqui</a></p>
-    `
-};
-
-// FUNÇÃO PARA MUDAR DE PÁGINA
-function loadPage(page) {
-    content.innerHTML = pages[page];
-
-    links.forEach(btn => btn.classList.remove("active"));
-    document.querySelector(`[data-page="${page}"]`).classList.add("active");
-}
-
-// EVENTOS DOS BOTÕES DO MENU
-links.forEach(btn => {
-    btn.addEventListener("click", () => {
-        loadPage(btn.dataset.page);
+        window.scrollTo({
+            top: topPosition,
+            behavior: "smooth"
+        });
     });
 });
 
-// MODAL (para o futuro, se quiser usar)
-function openModal(html) {
-    modalContent.innerHTML = html;
-    modalOverlay.style.display = "flex";
+// =============================
+// BOTÃO DE CONTATO (WHATSAPP)
+// =============================
+const whatsappBtn = document.getElementById("btnWhats");
+
+if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", () => {
+        window.open("https://wa.me/5541997765528", "_blank");
+    });
 }
 
-modalOverlay.addEventListener("click", () => {
-    modalOverlay.style.display = "none";
+// =============================
+// BOTÃO DE EMAIL
+// =============================
+const emailBtn = document.getElementById("btnEmail");
+
+if (emailBtn) {
+    emailBtn.addEventListener("click", () => {
+        window.location.href = "mailto:nicolly.remeniuk@escola.pr.gov.br";
+    });
+}
+
+// =============================
+// ANIMAÇÃO DE ENTRADA DOS CARDS
+// =============================
+const cards = document.querySelectorAll(".card");
+
+function animarCards() {
+    cards.forEach((card, i) => {
+        setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }, 150 * i);
+    });
+}
+
+window.addEventListener("load", () => {
+    cards.forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+    });
+
+    animarCards();
 });
 
-// VOLTAR AO TOPO
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        backToTop.classList.add("show");
-    } else {
-        backToTop.classList.remove("show");
-    }
-});
-
-backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// CARREGAR INÍCIO AUTOMATICAMENTE
-loadPage("home");

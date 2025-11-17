@@ -1,41 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Pessoal - Nicolly Domingues</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Pessoal</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Seus SDKs -->
+    <script src="/_sdk/data_sdk.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-    <header class="main-header">
-        <div class="header-content">
-            <span class="logo-title">NIC.OMD</span>
-
-            <nav class="menu">
-                <button class="nav-link" data-page="home">Início</button>
-                <button class="nav-link" data-page="profile">Perfil</button>
-                <button class="nav-link" data-page="contact">Contato</button>
+    <div class="container">
+        <div class="header">
+            <nav class="tabs">
+                <button class="tab active" data-tab="home">Home</button>
+                <button class="tab" data-tab="profile">Perfil</button>
+                <button class="tab" data-tab="contact">Contato</button>
             </nav>
         </div>
-    </header>
 
-    <main id="content-container" class="app-container">
-        <!-- Conteúdo carregado via JavaScript -->
-    </main>
+        <div class="content">
+            <!-- HOME -->
+            <div id="home" class="tab-content active">
+                <div class="home-content">
+                    <div class="profile-card">
+                        <div class="photo-container">
+                            <div class="photo-placeholder" id="photo-placeholder">
+                                <span class="photo-icon">📷</span>
+                                <span class="photo-text">Sua Foto</span>
+                            </div>
+                        </div>
 
-    <!-- Modal -->
-    <div id="topic-modal-overlay" class="modal-overlay">
-        <div id="topic-modal-content" class="modal-content"></div>
+                        <div class="name-block">
+                            <h1 id="main-title">Maria Silva</h1>
+                            <h2 id="subtitle">Desenvolvedora Web</h2>
+                            <button class="learn-more-btn" id="learn-more-btn">Saiba Mais</button>
+                        </div>
+                    </div>
+
+                    <p id="welcome-text">
+                        Bem-vindo à minha página pessoal! Aqui você pode conhecer mais
+                        sobre mim, minhas habilidades e como entrar em contato.
+                    </p>
+
+                    <div class="info-blocks">
+                        <div class="info-block" onclick="toggleBlock(this)">
+                            <span class="info-block-icon">👥</span>
+                            <h3 class="info-block-title">Meus Amigos</h3>
+                            <p class="info-block-content">Clique para saber mais...</p>
+                            <div class="info-block-full">Meus amigos são pessoas incríveis...</div>
+                        </div>
+
+                        <div class="info-block" onclick="toggleBlock(this)">
+                            <span class="info-block-icon">❤️</span>
+                            <h3 class="info-block-title">Família</h3>
+                            <p class="info-block-content">Clique para saber mais...</p>
+                            <div class="info-block-full">Eu moro com a minha mãe e meu irmão...</div>
+                        </div>
+
+                        <div class="info-block" onclick="toggleBlock(this)">
+                            <span class="info-block-icon">🎨</span>
+                            <h3 class="info-block-title">Hobbies</h3>
+                            <p class="info-block-content">Clique para saber mais...</p>
+                            <div class="info-block-full">Eu gosto de ler livros de fantasia...</div>
+                        </div>
+
+                        <div class="info-block" onclick="toggleBlock(this)">
+                            <span class="info-block-icon">✨</span>
+                            <h3 class="info-block-title">Sonhos</h3>
+                            <p class="info-block-content">Clique para saber mais...</p>
+                            <div class="info-block-full">Sempre sonhei em fazer intercâmbio...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PERFIL -->
+            <div id="profile" class="tab-content">
+                <div class="profile-content">
+                    <button class="back-btn" onclick="switchToTab('home')">← Voltar</button>
+                    <h2 id="profile-title">Sobre Mim</h2>
+
+                    <div class="profile-photo-section">
+                        <div class="profile-photo-placeholder">
+                            <span class="photo-icon">📷</span>
+                            <span class="photo-text">Sua Foto</span>
+                        </div>
+                    </div>
+
+                    <div class="detailed-description">
+                        <p id="about-text">
+                            Meu nome é Nicolly e sou uma pessoa cheia de sonhos...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTATO -->
+            <div id="contact" class="tab-content">
+                <div class="contact-content">
+                    <button class="back-btn" onclick="switchToTab('home')">← Voltar</button>
+                    <h2 id="contact-title">Entre em Contato</h2>
+
+                    <div class="contact-info">
+                        <a class="contact-item contact-link" href="mailto:seuemail@exemplo.com">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">seuemail@exemplo.com</div>
+                            </div>
+                        </a>
+
+                        <a class="contact-item contact-link" href="https://wa.me/5511987654321">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <div class="contact-label">WhatsApp</div>
+                                <div class="contact-value">+55 (11) 98765-4321</div>
+                            </div>
+                        </a>
+
+                        <a class="contact-item contact-link" href="https://instagram.com/seuusuario">
+                            <div class="contact-icon">📷</div>
+                            <div class="contact-details">
+                                <div class="contact-label">Instagram</div>
+                                <div class="contact-value">@seuusuario</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Botão voltar ao topo -->
-    <button id="back-to-top-btn" class="back-to-top">⬆</button>
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
 
-    <!-- JavaScript -->
+    <!-- JS externo -->
     <script src="script.js"></script>
 </body>
 </html>
