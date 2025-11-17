@@ -1,3 +1,4 @@
+// Configuração padrão
 const defaultConfig = {
   background_color: "#667eea",
   secondary_color: "#764ba2",
@@ -17,19 +18,15 @@ const defaultConfig = {
   location_label: "Localização"
 };
 
+// Atualiza a página quando a configuração muda
 async function onConfigChange(config) {
   const baseFont = config.font_family || defaultConfig.font_family;
-  const baseFontStack = 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
   const fontSize = config.font_size || defaultConfig.font_size;
 
-  document.body.style.fontFamily = `${baseFont}, ${baseFontStack}`;
+  document.body.style.fontFamily = `${baseFont}, Segoe UI, Tahoma, Geneva, Verdana, sans-serif`;
   document.body.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.secondary_color || defaultConfig.secondary_color} 100%)`;
 
-  const header = document.querySelector('.header');
-  header.style.background = `rgba(255, 255, 255, 0.95)`;
-
-  const content = document.querySelector('.content');
-  content.style.background = config.surface_color || defaultConfig.surface_color;
+  document.querySelector('.content').style.background = config.surface_color || defaultConfig.surface_color;
 
   const allText = document.querySelectorAll('p, .contact-value');
   allText.forEach(el => {
@@ -37,73 +34,11 @@ async function onConfigChange(config) {
     el.style.fontSize = `${fontSize}px`;
   });
 
-  const h1Elements = document.querySelectorAll('.home-content h1, .profile-content h2, .contact-content h2');
-  h1Elements.forEach(el => {
-    el.style.color = config.background_color || defaultConfig.background_color;
-    el.style.fontSize = `${fontSize * 2}px`;
-  });
+  document.querySelectorAll('.home-content h1, .profile-content h2, .contact-content h2')
+          .forEach(el => el.style.color = config.background_color || defaultConfig.background_color);
 
-  const h2Elements = document.querySelectorAll('.home-content h2, .skills h3');
-  h2Elements.forEach(el => {
-    el.style.color = config.secondary_color || defaultConfig.secondary_color;
-    el.style.fontSize = `${fontSize * 1.5}px`;
-  });
-
-  const activeTab = document.querySelector('.tab.active');
-  if (activeTab) {
-    activeTab.style.background = config.background_color || defaultConfig.background_color;
-  }
-
-  const learnMoreBtn = document.getElementById('learn-more-btn');
-  if (learnMoreBtn) {
-    learnMoreBtn.style.background = config.background_color || defaultConfig.background_color;
-  }
-
-  const backBtns = document.querySelectorAll('.back-btn');
-  backBtns.forEach(btn => {
-    btn.style.background = config.background_color || defaultConfig.background_color;
-  });
-
-  const contactItems = document.querySelectorAll('.contact-item, .info-block');
-  contactItems.forEach(el => {
-    el.style.background = config.accent_color || defaultConfig.accent_color;
-  });
-
-  const profileCard = document.querySelector('.profile-card');
-  if (profileCard) {
-    profileCard.style.background = config.accent_color || defaultConfig.accent_color;
-  }
-
-  const photoPlaceholder = document.querySelector('.photo-placeholder');
-  if (photoPlaceholder) {
-    photoPlaceholder.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.secondary_color || defaultConfig.secondary_color} 100%)`;
-  }
-
-  const profilePhotoPlaceholder = document.querySelector('.profile-photo-placeholder');
-  if (profilePhotoPlaceholder) {
-    profilePhotoPlaceholder.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.secondary_color || defaultConfig.secondary_color} 100%)`;
-  }
-
-  const detailedDescription = document.querySelector('.detailed-description');
-  if (detailedDescription) {
-    detailedDescription.style.background = config.accent_color || defaultConfig.accent_color;
-  }
-
-  const infoBlocks = document.querySelectorAll('.info-block');
-  infoBlocks.forEach(el => {
-    el.style.borderTopColor = config.background_color || defaultConfig.background_color;
-  });
-
-  const infoBlockTitles = document.querySelectorAll('.info-block-title');
-  infoBlockTitles.forEach(el => {
-    el.style.color = config.background_color || defaultConfig.background_color;
-  });
-
-  const contactLabels = document.querySelectorAll('.contact-label');
-  contactLabels.forEach(el => {
-    el.style.color = config.secondary_color || defaultConfig.secondary_color;
-    el.style.fontSize = `${fontSize * 0.875}px`;
-  });
+  document.querySelectorAll('.home-content h2, .skills h3')
+          .forEach(el => el.style.color = config.secondary_color || defaultConfig.secondary_color);
 
   document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
   document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
@@ -116,42 +51,23 @@ async function onConfigChange(config) {
   document.getElementById('location-label').textContent = config.location_label || defaultConfig.location_label;
 }
 
+// Mapear capacidades editáveis
 function mapToCapabilities(config) {
   return {
     recolorables: [
-      {
-        get: () => config.background_color || defaultConfig.background_color,
-        set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
-      },
-      {
-        get: () => config.secondary_color || defaultConfig.secondary_color,
-        set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
-      },
-      {
-        get: () => config.surface_color || defaultConfig.surface_color,
-        set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
-      },
-      {
-        get: () => config.text_color || defaultConfig.text_color,
-        set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
-      },
-      {
-        get: () => config.accent_color || defaultConfig.accent_color,
-        set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
-      }
+      { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+      { get: () => config.secondary_color || defaultConfig.secondary_color, set: v => { config.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); } },
+      { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+      { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+      { get: () => config.accent_color || defaultConfig.accent_color, set: v => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
     ],
     borderables: [],
-    fontEditable: {
-      get: () => config.font_family || defaultConfig.font_family,
-      set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
-    },
-    fontSizeable: {
-      get: () => config.font_size || defaultConfig.font_size,
-      set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
-    }
+    fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+    fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
   };
 }
 
+// Valores para painel de edição
 function mapToEditPanelValues(config) {
   return new Map([
     ["main_title", config.main_title || defaultConfig.main_title],
@@ -166,6 +82,7 @@ function mapToEditPanelValues(config) {
   ]);
 }
 
+// Inicialização do SDK
 if (window.elementSdk) {
   window.elementSdk.init({
     defaultConfig,
@@ -175,6 +92,7 @@ if (window.elementSdk) {
   });
 }
 
+// Lógica de abas
 const tabs = document.querySelectorAll('.tab');
 const tabContents = document.querySelectorAll('.tab-content');
 
@@ -186,36 +104,22 @@ function switchToTab(tabName) {
   if (targetTab) {
     targetTab.classList.add('active');
     document.getElementById(tabName).classList.add('active');
-
-    const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
-    targetTab.style.background = config.background_color || defaultConfig.background_color;
-
-    tabs.forEach(t => {
-      if (!t.classList.contains('active')) {
-        t.style.background = '#f0f0f0';
-      }
-    });
   }
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const targetTab = tab.getAttribute('data-tab');
-    switchToTab(targetTab);
-  });
-});
+tabs.forEach(tab => tab.addEventListener('click', () => switchToTab(tab.getAttribute('data-tab'))));
 
 const learnMoreBtn = document.getElementById('learn-more-btn');
 if (learnMoreBtn) {
-  learnMoreBtn.addEventListener('click', () => {
-    switchToTab('profile');
-  });
+  learnMoreBtn.addEventListener('click', () => switchToTab('profile'));
 }
 
+// Expandir blocos de informação
 function toggleBlock(block) {
   block.classList.toggle('expanded');
 }
 
+// Carousel
 let currentSlide = 0;
 const totalSlides = 4;
 
@@ -229,11 +133,10 @@ function moveCarousel(direction) {
 
   currentSlide += direction;
   if (currentSlide < 0) currentSlide = totalSlides - 1;
-  else if (currentSlide >= totalSlides) currentSlide = 0;
+  if (currentSlide >= totalSlides) currentSlide = 0;
 
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
-
   track.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
@@ -249,26 +152,17 @@ function goToSlide(index) {
 
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
-
   track.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
+// Scroll to top
 const scrollToTopBtn = document.getElementById('scrollToTop');
 const contentArea = document.querySelector('.content');
 
 contentArea.addEventListener('scroll', () => {
-  if (contentArea.scrollTop > 300) {
-    scrollToTopBtn.classList.add('visible');
-  } else {
-    scrollToTopBtn.classList.remove('visible');
-  }
+  scrollToTopBtn.classList.toggle('visible', contentArea.scrollTop > 300);
 });
 
 function scrollToTop() {
-  contentArea.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+  contentArea.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-
