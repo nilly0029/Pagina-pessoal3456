@@ -1,65 +1,79 @@
+/* ===============================
+   ESTILOS GERAIS
+=============================== */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #eef2ff;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f7fb;
+  color: #1e293b;
 }
 
-.hero-banner {
-    background: linear-gradient(135deg, #a5b4fc 0%, #f9a8d4 100%);
+/* ===============================
+   HEADER
+=============================== */
+.main-header {
+  background: #ffffff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #4aa3f5;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #64748b;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #4aa3f5;
 }
 
 .nav-link.active {
-    color: #818cf8;
-    border-bottom: 2px solid #818cf8;
-    font-weight: 600;
+  color: #1e40af;
+  border-bottom-color: #4aa3f5;
 }
 
-.profile-frame {
-    border: 4px solid #818cf8;
-    box-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.5),
-                0 4px 6px -2px rgba(129, 140, 248, 0.2);
-    position: relative;
+/* ===============================
+   CONTEÚDO PRINCIPAL
+=============================== */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.5rem;
 }
 
-.profile-initials {
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
+section {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* MODAL */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-}
-
-.modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 90%;
-    width: 500px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
-                0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    animation: slide-in 0.3s ease-out;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-@keyframes slide-in {
-    from {
-        transform: translateY(-50px) scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-}
