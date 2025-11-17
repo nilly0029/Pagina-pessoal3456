@@ -1,39 +1,66 @@
-// script.js
-// Sistema de navegação entre páginas
+// ELEMENTOS
+const links = document.querySelectorAll(".nav-link");
+const content = document.getElementById("content-container");
+const modalOverlay = document.getElementById("topic-modal-overlay");
+const modalContent = document.getElementById("topic-modal-content");
+const backToTop = document.getElementById("back-to-top-btn");
 
-// Conteúdos das páginas
+// CONTEÚDOS DAS PÁGINAS
 const pages = {
     home: `
-        <section class="page-section">
-            <h2>Bem-vinda, Nicolly!</h2>
-            <p>Este é o início do seu site personalizado.</p>
-        </section>
+        <h1>Bem-vinda, Nicolly!</h1>
+        <p>Este é o início do seu site totalmente responsivo e funcional.</p>
     `,
+
     profile: `
-        <section class="page-section">
-            <h2>Meu Perfil</h2>
-            <p>Aqui você pode colocar suas informações pessoais, hobbies, sonhos e muito mais.</p>
-        </section>
+        <h1>Perfil</h1>
+        <p>Seu perfil personalizável com informações sobre você.</p>
     `,
+
     contact: `
-        <section class="page-section">
-            <h2>Contato</h2>
-            <p>Email: nicolly.remeniuk@escola.pr.gov.br</p>
-            <p>WhatsApp: <a href="https://wa.me/5541997765528" target="_blank">Clique para conversar</a></p>
-        </section>
+        <h1>Contato</h1>
+        <p>Email: <a href="mailto:nicolly.remeniuk@escola.pr.gov.br">Enviar email</a></p>
+        <p>WhatsApp: <a href="https://wa.me/5541997765528" target="_blank">Clique aqui</a></p>
     `
 };
 
-// Área onde o conteúdo aparece
-const content = document.getElementById("content");
+// FUNÇÃO PARA MUDAR DE PÁGINA
+function loadPage(page) {
+    content.innerHTML = pages[page];
 
-// Carrega página inicial
-content.innerHTML = pages.home;
+    links.forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`[data-page="${page}"]`).classList.add("active");
+}
 
-// Ativa os botões de navegação
-document.querySelectorAll(".nav-link").forEach(button => {
-    button.addEventListener("click", () => {
-        const page = button.getAttribute("data-page");
-        content.innerHTML = pages[page];
+// EVENTOS DOS BOTÕES DO MENU
+links.forEach(btn => {
+    btn.addEventListener("click", () => {
+        loadPage(btn.dataset.page);
     });
 });
+
+// MODAL (para o futuro, se quiser usar)
+function openModal(html) {
+    modalContent.innerHTML = html;
+    modalOverlay.style.display = "flex";
+}
+
+modalOverlay.addEventListener("click", () => {
+    modalOverlay.style.display = "none";
+});
+
+// VOLTAR AO TOPO
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// CARREGAR INÍCIO AUTOMATICAMENTE
+loadPage("home");

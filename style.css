@@ -1,79 +1,139 @@
-/* ===============================
-   ESTILOS GERAIS
-=============================== */
+/* ===================================================================
+   VARIÁVEIS DE TEMA
+   =================================================================== */
+:root {
+    --color-primary-600: #85C7F2;
+    --color-primary-700: #5D9ACB;
+    --color-primary-100: #F2E2E8;
+    --color-background: #fdfcfd;
+    --color-surface: white;
+    --color-text-base: #1e293b;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);
+
+    --radius-xl: 1rem;
+    --transition-speed: 0.3s;
+}
+
+/* ===================================================================
+   GERAL
+   =================================================================== */
 body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f5f7fb;
-  color: #1e293b;
+    font-family: system-ui, sans-serif;
+    background: var(--color-background);
+    margin: 0;
+    color: var(--color-text-base);
+    line-height: 1.6;
 }
 
-/* ===============================
-   HEADER
-=============================== */
-.main-header {
-  background: #ffffff;
-  padding: 1rem 0;
-  border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.app-container {
+    max-width: 1152px;
+    margin: auto;
+    padding: 1.5rem;
 }
 
 .logo-title {
-  font-size: 1.7rem;
-  font-weight: 900;
-  color: #4aa3f5;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-primary-700);
 }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
+/* ===================================================================
+   HEADER
+   =================================================================== */
+.main-header {
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-content {
+    height: 4rem;
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 1.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-link {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #64748b;
-  padding-bottom: 0.3rem;
-  border-bottom: 3px solid transparent;
-  transition: 0.3s;
+    background: none;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    transition: var(--transition-speed);
 }
 
 .nav-link:hover {
-  color: #4aa3f5;
+    color: var(--color-primary-600);
 }
 
 .nav-link.active {
-  color: #1e40af;
-  border-bottom-color: #4aa3f5;
+    border-bottom: 3px solid var(--color-primary-600);
+    color: var(--color-primary-700);
 }
 
-/* ===============================
-   CONTEÚDO PRINCIPAL
-=============================== */
-main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 2rem 1.5rem;
+/* ===================================================================
+   MODAL
+   =================================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
 }
 
-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    max-width: 700px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+    animation: slideIn .3s ease-out;
 }
 
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================================================================
+   BOTÃO VOLTAR AO TOPO
+   =================================================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: .75rem;
+    background: var(--color-primary-600);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
