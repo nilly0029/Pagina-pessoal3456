@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Pessoal</title>
-
-  <!-- CSS externo -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- SDKs e Tailwind -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
 </head>
 <body>
   <div class="container">
@@ -22,22 +18,26 @@
         <button class="tab" data-tab="contact">Contato</button>
       </nav>
     </div>
+
     <div class="content">
+      <!-- HOME -->
       <div id="home" class="tab-content active">
-        <!-- Conteúdo Home -->
+        <!-- conteúdo da home -->
       </div>
+
+      <!-- PERFIL -->
       <div id="profile" class="tab-content">
-        <!-- Conteúdo Perfil -->
+        <!-- conteúdo do perfil -->
       </div>
+
+      <!-- CONTATO -->
       <div id="contact" class="tab-content">
-        <!-- Conteúdo Contato -->
+        <!-- conteúdo do contato -->
       </div>
     </div>
   </div>
 
   <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
-
-  <!-- JS externo -->
-  <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
