@@ -1,59 +1,187 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Pessoal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Pessoal</title>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 
-    <!-- SDKs -->
-    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-    <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
 
-    <!-- CSS separado -->
-    <link rel="stylesheet" href="style.css">
+  <!-- SDKs -->
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js"></script>
 </head>
-
 <body>
-    <img src="https://sua-url-da-imagem.com/foto.jpg" alt="Descrição">
-
-    <div class="container">
-        <div class="header">
-            <nav class="tabs">
-                <button class="tab active" data-tab="home">Home</button>
-                <button class="tab" data-tab="profile">Perfil</button>
-                <button class="tab" data-tab="contact">Contato</button>
-            </nav>
-        </div>
-
-        <div class="content">
-            <!-- CONTEÚDO DA ABA HOME -->
-            <div id="home" class="tab-content active">
-                <!-- (todo o HTML interno continua exatamente igual) -->
-                <!-- NÃO ALTEREI NADA, só removi CSS/JS -->
-                <!-- ... -->
-            </div>
-
-            <!-- CONTEÚDO DA ABA PROFILE -->
-            <div id="profile" class="tab-content">
-                <!-- ... -->
-            </div>
-
-            <!-- CONTEÚDO DA ABA CONTACT -->
-            <div id="contact" class="tab-content">
-                <!-- ... -->
-            </div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <nav class="tabs">
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="profile">Perfil</button>
+        <button class="tab" data-tab="contact">Contato</button>
+      </nav>
     </div>
 
-    <button class="scroll-to-top" id="scrollToTop">↑</button>
+    <div class="content">
+      <!-- Home -->
+      <div id="home" class="tab-content active">
+        <div class="home-content">
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div class="photo-container">
+              <div class="photo-placeholder" id="photo-placeholder">
+                <span class="photo-icon">📷</span>
+                <span class="photo-text">Sua Foto</span>
+              </div>
+            </div>
+            <div class="name-block">
+              <h1 id="main-title">Maria Silva</h1>
+              <h2 id="subtitle">Desenvolvedora Web</h2>
+              <button class="learn-more-btn" id="learn-more-btn">Saiba Mais</button>
+            </div>
+          </div>
 
-    <!-- JS separado -->
-    <script src="script.js"></script>
+          <p id="welcome-text">
+            Bem-vindo à minha página pessoal! Aqui você pode conhecer mais sobre mim, minhas habilidades e como entrar em contato.
+          </p>
+
+          <!-- Info Blocks -->
+          <div class="info-blocks">
+            <div class="info-block" onclick="toggleBlock(this)">
+              <span class="info-block-icon">👥</span>
+              <h3 class="info-block-title">Meus Amigos</h3>
+              <p class="info-block-content">Clique para saber mais...</p>
+              <div class="info-block-full">
+                Meus amigos são pessoas incríveis. Cada um deles me inspira de um jeito diferente, e sou muito grata por ter por perto pessoas que me apoiam, me fazem rir e tornam os meus dias melhores.
+              </div>
+            </div>
+
+            <div class="info-block" onclick="toggleBlock(this)">
+              <span class="info-block-icon">❤️</span>
+              <h3 class="info-block-title">Família</h3>
+              <p class="info-block-content">Clique para saber mais...</p>
+              <div class="info-block-full">
+                Eu moro com a minha mãe e com o meu irmão, que são minha base e o meu maior apoio. A gente passa por muita coisa juntos, e é essa união que me ajuda a continuar crescendo cada vez mais.
+              </div>
+            </div>
+
+            <div class="info-block" onclick="toggleBlock(this)">
+              <span class="info-block-icon">🎨</span>
+              <h3 class="info-block-title">Hobbies</h3>
+              <p class="info-block-content">Clique para saber mais...</p>
+              <div class="info-block-full">
+                Eu gosto de ler livros principalmente de fantasia. Recentemente comecei a criar coisas com limpador de cachimbo virou uma forma divertida de soltar a criatividade. Também estou voltando a desenhar, um hobby que sempre me trouxe calma e me ajudou a me expressar.
+              </div>
+            </div>
+
+            <div class="info-block" onclick="toggleBlock(this)">
+              <span class="info-block-icon">✨</span>
+              <h3 class="info-block-title">Sonhos</h3>
+              <p class="info-block-content">Clique para saber mais...</p>
+              <div class="info-block-full">
+                Sempre sonhei em fazer intercâmbio e viajar pelo mundo. Quero conhecer novas culturas, aprender idiomas e viver experiências que me ajudem a crescer como pessoa.
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel -->
+          <div class="carousel-section">
+            <h3 class="carousel-title">Galeria de Fotos</h3>
+            <div class="carousel-container">
+              <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)">❮</button>
+              <div class="carousel-wrapper">
+                <div class="carousel-track">
+                  <div class="carousel-slide active">
+                    <div class="carousel-image"><span class="carousel-icon">🖼️</span> <span class="carousel-text">Imagem 1</span></div>
+                  </div>
+                  <div class="carousel-slide">
+                    <div class="carousel-image"><span class="carousel-icon">📸</span> <span class="carousel-text">Imagem 2</span></div>
+                  </div>
+                  <div class="carousel-slide">
+                    <div class="carousel-image"><span class="carousel-icon">🎨</span> <span class="carousel-text">Imagem 3</span></div>
+                  </div>
+                  <div class="carousel-slide">
+                    <div class="carousel-image"><span class="carousel-icon">✨</span> <span class="carousel-text">Imagem 4</span></div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)">❯</button>
+            </div>
+
+            <div class="carousel-dots">
+              <span class="dot active" onclick="goToSlide(0)"></span>
+              <span class="dot" onclick="goToSlide(1)"></span>
+              <span class="dot" onclick="goToSlide(2)"></span>
+              <span class="dot" onclick="goToSlide(3)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div id="profile" class="tab-content">
+        <div class="profile-content">
+          <button class="back-btn" onclick="switchToTab('home')">← Voltar</button>
+          <h2 id="profile-title">Sobre Mim</h2>
+          <div class="profile-photo-section">
+            <div class="profile-photo-placeholder">
+              <span class="photo-icon">📷</span>
+              <span class="photo-text">Sua Foto</span>
+            </div>
+          </div>
+          <div class="detailed-description">
+            <p id="about-text">
+              Meu nome é Nicolly e sou uma pessoa cheia de sonhos e vontade de evoluir. Gosto de aprender, criar e buscar sempre o melhor para mim e para quem está ao meu redor. Valorizo minha família, meus amigos e tudo o que me faz crescer. Estou sempre construindo meu futuro com determinação e fé.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div id="contact" class="tab-content">
+        <div class="contact-content">
+          <button class="back-btn" onclick="switchToTab('home')">← Voltar</button>
+          <h2 id="contact-title">Entre em Contato</h2>
+          <div class="contact-info">
+            <a href="mailto:seuemail@exemplo.com" class="contact-item contact-link">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <div class="contact-label" id="email-label">Email</div>
+                <div class="contact-value">seuemail@exemplo.com</div>
+              </div>
+            </a>
+
+            <a href="https://wa.me/5511987654321" class="contact-item contact-link">
+              <div class="contact-icon">📱</div>
+              <div class="contact-details">
+                <div class="contact-label" id="phone-label">WhatsApp</div>
+                <div class="contact-value">+55 (11) 98765-4321</div>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/seuusuario" class="contact-item contact-link">
+              <div class="contact-icon">📷</div>
+              <div class="contact-details">
+                <div class="contact-label" id="location-label">Instagram</div>
+                <div class="contact-value">@seuusuario</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
