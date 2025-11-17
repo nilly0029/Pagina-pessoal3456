@@ -3,41 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Pessoal</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <title>Nicolly Domingues</title>
+  <link rel="stylesheet" href="style.css">
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <nav class="tabs">
-        <button class="tab active" data-tab="home">Home</button>
-        <button class="tab" data-tab="profile">Perfil</button>
-        <button class="tab" data-tab="contact">Contato</button>
-      </nav>
+    <!-- Navegação -->
+    <nav class="nav">
+      <button class="nav-btn active" onclick="showPage('home')">Home</button>
+      <button class="nav-btn" onclick="showPage('perfil')">Perfil</button>
+      <button class="nav-btn" onclick="showPage('contatos')">Contatos</button>
+    </nav>
+
+    <!-- Página Home -->
+    <div id="home" class="page active">
+      <div class="hero">
+        <div class="profile-photo">👩</div>
+        <h1 id="nome-hero">Nicolly Domingues</h1>
+        <button class="btn-primary" onclick="showPage('perfil')">Saiba Mais</button>
+      </div>
+      <div class="blocks-grid">
+        <div class="block" onclick="toggleBlock(this)">
+          <div class="block-icon">👨‍👩‍👧‍👦</div>
+          <h3>Família</h3>
+          <div class="block-description" id="familia-desc">
+            Eu moro com a minha mãe e com o meu irmão, que são minha base e o meu maior apoio. A gente passa por muita coisa juntos, e é essa união que me ajuda a continuar crescendo cada vez mais.
+          </div>
+        </div>
+        <div class="block" onclick="toggleBlock(this)">
+          <div class="block-icon">🎨</div>
+          <h3>Hobbies</h3>
+          <div class="block-description" id="hobbies-desc">
+            Eu gosto de ler livros principalmente de fantasia. Recentemente comecei a criar coisas com limpador de cachimbo virou uma forma divertida de soltar a criatividade. Também estou voltando a desenhar, um hobby que sempre me trouxe calma e me ajudou a me expressar.
+          </div>
+        </div>
+        <div class="block" onclick="toggleBlock(this)">
+          <div class="block-icon">👥</div>
+          <h3>Amigos</h3>
+          <div class="block-description" id="amigos-desc">
+            Meus amigos são pessoas incríveis. Cada um deles me inspira de um jeito diferente, e sou muito grata por ter por perto pessoas que me apoiam, me fazem rir e tornam os meus dias melhores.
+          </div>
+        </div>
+        <div class="block" onclick="toggleBlock(this)">
+          <div class="block-icon">✨</div>
+          <h3>Sonhos</h3>
+          <div class="block-description" id="sonhos-desc">
+            Sempre sonhei em fazer intercâmbio e viajar pelo mundo. Quero conhecer novas culturas, aprender idiomas e viver experiências que me ajudem a crescer como pessoa.
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="content">
-      <!-- HOME -->
-      <div id="home" class="tab-content active">
-        <!-- conteúdo da home -->
+    <!-- Página Perfil -->
+    <div id="perfil" class="page">
+      <div class="profile-page">
+        <button class="back-btn" onclick="showPage('home')">← Voltar</button>
+        <div class="profile-content">
+          <div class="profile-large-photo">👩</div>
+          <p class="about-text" id="sobre-texto">
+            Meu nome é Nicolly e sou uma pessoa cheia de sonhos e vontade de evoluir. Gosto de aprender, criar e buscar sempre o melhor para mim e para quem está ao meu redor. Valorizo minha família, meus amigos e tudo o que me faz crescer. Estou sempre construindo meu futuro com determinação e fé.
+          </p>
+        </div>
       </div>
+    </div>
 
-      <!-- PERFIL -->
-      <div id="profile" class="tab-content">
-        <!-- conteúdo do perfil -->
-      </div>
-
-      <!-- CONTATO -->
-      <div id="contact" class="tab-content">
-        <!-- conteúdo do contato -->
+    <!-- Página Contatos -->
+    <div id="contatos" class="page">
+      <div class="contact-page">
+        <button class="back-btn" onclick="showPage('home')">← Voltar</button>
+        <h2 class="contact-title" id="contato-titulo-texto">Entre em contato comigo</h2>
+        <div class="contact-grid">
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="contact-block">
+            <div class="contact-icon">📱</div>
+            <h3>WhatsApp</h3>
+          </a>
+          <a href="https://instagram.com/seu_usuario" target="_blank" rel="noopener noreferrer" class="contact-block">
+            <div class="contact-icon">📷</div>
+            <h3>Instagram</h3>
+          </a>
+          <a href="mailto:seu_email@exemplo.com" target="_blank" rel="noopener noreferrer" class="contact-block">
+            <div class="contact-icon">✉️</div>
+            <h3>Email</h3>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-  <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
