@@ -60,3 +60,10 @@ window.addEventListener("load", () => {
     animarCards();
 });
 
+// =============================
+// MOSTRAR/ESCONDER INFORMAÇÕES
+// =============================
+function showInfo(id) {
+    const item = document.getElementById(id);
+    item.style.display = item.style.display === "block" ? "none" : "block";
+}
