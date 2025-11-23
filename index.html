@@ -2,24 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nicolly — Portfolio</title>
+
+  <!-- Fonte Caveat (títulos) + Inter para corpo (fallback suave) -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAV -->
   <header class="nav">
     <div class="brand">Nicolly</div>
-    <nav class="nav-buttons">
+    <nav class="nav-buttons" role="navigation" aria-label="Navegação principal">
       <button class="nav-btn active" data-target="home">Home</button>
       <button class="nav-btn" data-target="perfil">Perfil</button>
     </nav>
   </header>
 
-  <!-- HOME -->
-  <main id="home" class="page active">
-    <section class="hero">
+  <!-- HOME (página única, SPA) -->
+  <main id="home" class="page active" role="main" aria-labelledby="home-title">
+    <section class="hero" aria-hidden="false">
       <img class="profile-photo" src="/mnt/data/Captura de tela 2025-11-17 175125.png" alt="Foto de Nicolly">
       <div class="hero-text">
         <h1 class="name">Nicolly Domingues</h1>
@@ -28,43 +30,63 @@
       </div>
     </section>
 
-    <section class="blocks-wrapper">
-      <!-- 4 blocos lado a lado estilo scrapbook -->
-      <div class="block" onclick="openModal('familia')">Família 🌙</div>
-      <div class="block" onclick="openModal('hobbies')">Hobbies 🎨</div>
-      <div class="block" onclick="openModal('amigos')">Amigos 💕</div>
-      <div class="block" onclick="openModal('sonhos')">Sonhos ✈️</div>
+    <section class="scroll-blocks" aria-label="Blocos principais">
+      <!-- blocos quadrados com emoji + texto (rolagem horizontal) -->
+      <div class="blocks-inner" role="list">
+        <button class="block" role="listitem" onclick="openModal('familia')">
+          <div class="emoji">🌙</div>
+          <div class="label">Família</div>
+        </button>
+
+        <button class="block" role="listitem" onclick="openModal('hobbies')">
+          <div class="emoji">🎨</div>
+          <div class="label">Hobbies</div>
+        </button>
+
+        <button class="block" role="listitem" onclick="openModal('amigos')">
+          <div class="emoji">💕</div>
+          <div class="label">Amigos</div>
+        </button>
+
+        <button class="block" role="listitem" onclick="openModal('sonhos')">
+          <div class="emoji">✈️</div>
+          <div class="label">Sonhos</div>
+        </button>
+      </div>
     </section>
   </main>
 
   <!-- PERFIL -->
-  <main id="perfil" class="page">
+  <main id="perfil" class="page" role="main" aria-labelledby="perfil-title">
     <section class="perfil-top">
-      <button class="back" data-target="home">← Voltar</button>
-      <img class="profile-photo-large" src="/mnt/data/Captura de tela 2025-11-17 175125.png" alt="Foto de Nicolly">
+      <button class="back" data-target="home" aria-label="Voltar para Home">← Voltar</button>
+
+      <img class="profile-photo-large" src="/mnt/data/Captura de tela 2025-11-17 175125.png" alt="Foto grande de Nicolly">
+
       <div class="bio">
         <p>
           Meu nome é <strong>Nicolly</strong> — sou cheia de sonhos e vontade de evoluir. Gosto de aprender,
-          criar e buscar sempre o melhor. Valorizo minha família, meus amigos e tudo que me faz crescer.
-          Construo meu futuro com determinação e fé.
+          criar e buscar sempre o melhor para mim e para quem está ao meu redor. Valorizo minha família, meus amigos
+          e tudo que me faz crescer. Construo meu futuro com determinação e fé.
         </p>
       </div>
     </section>
 
-    <section class="contato-section">
+    <section class="contato-section" aria-label="Contatos">
       <h3>Entre em contato</h3>
       <div class="contatos">
-        <a class="contact" href="https://wa.me/seu_numero" target="_blank">WhatsApp</a>
-        <a class="contact" href="https://instagram.com/seu_usuario" target="_blank">Instagram</a>
+        <a class="contact" href="https://wa.me/seu_numero" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="contact" href="https://instagram.com/seu_usuario" target="_blank" rel="noopener">Instagram</a>
         <a class="contact" href="mailto:seuemail@exemplo.com">Email</a>
       </div>
     </section>
   </main>
 
-  <!-- MODAL central com X -->
-  <div id="modal-bg" class="modal-bg" onclick="closeModal()"></div>
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <button class="modal-close" aria-label="Fechar" onclick="closeModal()">✕</button>
+  <!-- MODAL central -->
+  <div id="modal-bg" class="modal-bg" onclick="closeModal()" aria-hidden="true"></div>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <button class="modal-close" aria-label="Fechar modal" onclick="closeModal()">✕</button>
     <h2 id="modal-title" class="modal-title"></h2>
     <p id="modal-body" class="modal-body"></p>
   </div>
