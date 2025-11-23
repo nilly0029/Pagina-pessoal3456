@@ -26,49 +26,20 @@
         </div>
     </div>
 
-    <div class="cards-container">
-
-        <div class="card" onclick="toggleDesc('descAmigos')">
-            <h3>Amigos</h3>
-            <p>Clique para saber mais</p>
-        </div>
-        <div id="descAmigos" class="descricao">
-            Meus amigos são pessoas incríveis. Cada um deles me inspira de um jeito diferente,
-            e sou muito grata por ter por perto pessoas que me apoiam e tornam meus dias melhores.
-        </div>
-
-        <div class="card" onclick="toggleDesc('descFamilia')">
-            <h3>Família</h3>
-            <p>Clique para saber mais</p>
-        </div>
-        <div id="descFamilia" class="descricao">
-            Eu moro com a minha mãe e com o meu irmão, que são minha base e maior apoio.
-            Nossa união me fortalece e me ajuda a crescer.
-        </div>
-
-        <div class="card" onclick="toggleDesc('descHobbies')">
-            <h3>Hobbies</h3>
-            <p>Clique para saber mais</p>
-        </div>
-        <div id="descHobbies" class="descricao">
-            Adoro ler fantasia, criar artes com limpador de cachimbo e desenhar como forma de expressão.
-        </div>
-
-        <div class="card" onclick="toggleDesc('descSonhos')">
-            <h3>Sonhos</h3>
-            <p>Clique para saber mais</p>
-        </div>
-        <div id="descSonhos" class="descricao">
-            Sonho em fazer intercâmbio, viajar pelo mundo e viver experiências culturais que me façam evoluir.
-        </div>
-
+    <!-- NOVOS BLOCOS EM GRID -->
+    <div class="grid-blocos">
+        <div class="bloco" onclick="openModal('sonhos')">Sonhos</div>
+        <div class="bloco" onclick="openModal('amigos')">Amigos</div>
+        <div class="bloco" onclick="openModal('familia')">Família</div>
+        <div class="bloco" onclick="openModal('hobbies')">Hobbies</div>
     </div>
+
 </section>
 
 <!-- ===================== PERFIL ===================== -->
 <section id="perfil" class="tab">
-    <h1>Sobre Mim</h1>
 
+    <h1>Sobre Mim</h1>
     <div class="perfil-foto"></div>
 
     <div class="descricao-box">
@@ -90,7 +61,19 @@
 
 </section>
 
+<!-- 🔹 MODAL DESCRIÇÕES -->
+<div id="modal-bg" class="modal-bg" onclick="closeModal()"></div>
+
+<div id="modal" class="modal">
+
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+
+    <button class="close" onclick="closeModal()">Fechar</button>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
+
 
