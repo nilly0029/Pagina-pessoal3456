@@ -48,18 +48,14 @@ function showTab(tabId) {
     });
 
     const activeTab = document.getElementById(tabId);
-    if (activeTab) {
-        activeTab.style.display = 'block';
-        void activeTab.offsetWidth;
-        activeTab.classList.add('active');
-    }
+    activeTab.style.display = 'block';
+    void activeTab.offsetWidth;
+    activeTab.classList.add('active');
 
     const activeNavButton = document.getElementById('nav-' + tabId);
-    if (activeNavButton) {
-        activeNavButton.classList.remove('text-gray-600');
-        activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
-    }
-    
+    activeNavButton.classList.remove('text-gray-600');
+    activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

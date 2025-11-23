@@ -2,9 +2,10 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f7f9fc;
+    background-color: #f7f9fc; /* Fundo cinza claro */
 }
 
+/* Estilo para a animação de transição das abas */
 .tab-content {
     opacity: 0;
     transform: translateY(10px);
