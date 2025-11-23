@@ -5,14 +5,16 @@ body {
     background-color: #f7f9fc; /* Fundo cinza claro */
 }
 
-/* Estilo para a animação de transição das abas */
+/* Exibir somente a aba ativa + animação */
 .tab-content {
+    display: none;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .tab-content.active {
+    display: block;
     opacity: 1;
     transform: translateY(0);
 }
