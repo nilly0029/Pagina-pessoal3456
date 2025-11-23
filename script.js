@@ -20,7 +20,7 @@ const descriptions = {
     sonhos: `
         <div class="text-gray-700">
             <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center"><i class="fas fa-globe-americas mr-2"></i> Meus Sonhos</h3>
-            <p>Sempre sonhei em fazer intercâmbio e viajar pelo mundo...</p>
+            <p>Sempre sonhei em fazer intercâmbio...</p>
         </div>
     `
 };
@@ -48,13 +48,17 @@ function showTab(tabId) {
     });
 
     const activeTab = document.getElementById(tabId);
-    activeTab.style.display = 'block';
-    void activeTab.offsetWidth;
-    activeTab.classList.add('active');
+    if (activeTab) {
+        activeTab.style.display = 'block';
+        void activeTab.offsetWidth;
+        activeTab.classList.add('active');
+    }
 
     const activeNavButton = document.getElementById('nav-' + tabId);
-    activeNavButton.classList.remove('text-gray-600');
-    activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
+    if (activeNavButton) {
+        activeNavButton.classList.remove('text-gray-600');
+        activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
