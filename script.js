@@ -1,21 +1,14 @@
-// ABAS
-function openTab(tab) {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-
-    document.getElementById(tab).classList.add("active");
-    event.target.classList.add("active");
-}
-
-// TEXTOS DAS DESCRIÇÕES
 const textos = {
-    sonhos: "Sempre sonhei em fazer intercâmbio e viajar pelo mundo. Quero conhecer novas culturas, aprender idiomas e viver experiências que me ajudem a crescer como pessoa.",
-    amigos: "Meus amigos são pessoas incríveis. Cada um deles me inspira de um jeito diferente e torna meus dias melhores.",
-    familia: "Eu moro com minha mãe e meu irmão, que são minha base e maior apoio. Nossa união me fortalece.",
-    hobbies: "Adoro ler fantasia, criar artes com limpador de cachimbo e desenhar como forma de expressão."
+    sonhos: "Tenho um coração que sonha alto: viajar pelo mundo, aprender novas línguas e colecionar memórias que mudam quem eu sou. Quero viver histórias que iluminem meu futuro ✨",
+    
+    amigos: "Meus amigos são como pequenas constelações na minha vida — cada um brilha de um jeito especial. Eles me inspiram, me fazem sorrir e tornam tudo mais leve ✩",
+    
+    familia: "Minha família é meu porto seguro. Cresço com eles, aprendo com eles e encontro força em cada momento compartilhado. É amor que me sustenta 💕",
+    
+    hobbies: "Desenhar, ler fantasia e criar coisas novas são formas de transformar sentimentos em arte. Meu mundo criativo é onde eu respiro e me reencontro 🎨"
 };
 
-// ABRIR MODAL
+/* ABRE MODAL */
 function openModal(tipo) {
     document.getElementById("modal-title").innerText = tipo.charAt(0).toUpperCase() + tipo.slice(1);
     document.getElementById("modal-text").innerText = textos[tipo];
@@ -24,8 +17,9 @@ function openModal(tipo) {
     document.getElementById("modal").style.display = "block";
 }
 
-// FECHAR MODAL
+/* FECHA MODAL */
 function closeModal() {
     document.getElementById("modal-bg").style.display = "none";
     document.getElementById("modal").style.display = "none";
 }
+

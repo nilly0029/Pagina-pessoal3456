@@ -8,72 +8,28 @@
 </head>
 <body>
 
-<!-- MENU -->
-<nav>
-    <button onclick="openTab('home')" class="tab-btn active">Home</button>
-    <button onclick="openTab('perfil')" class="tab-btn">Perfil</button>
-</nav>
+<section class="bloco-section">
+    <h2 class="titulo-area">Coisas que fazem parte de mim ✨</h2>
 
-<!-- ===================== HOME ===================== -->
-<section id="home" class="tab active">
-
-    <div class="perfil-card">
-        <div class="foto"></div>
-        <div class="info">
-            <h2>Nicolly Domingues</h2>
-            <p>Sonhos, criatividade e evolução ✨</p>
-            <button onclick="openTab('perfil')" class="btn">Saiba Mais</button>
-        </div>
-    </div>
-
-    <!-- NOVOS BLOCOS EM GRID -->
     <div class="grid-blocos">
-        <div class="bloco" onclick="openModal('sonhos')">Sonhos</div>
-        <div class="bloco" onclick="openModal('amigos')">Amigos</div>
-        <div class="bloco" onclick="openModal('familia')">Família</div>
-        <div class="bloco" onclick="openModal('hobbies')">Hobbies</div>
+        <div class="bloco" onclick="openModal('sonhos')">Sonhos ✨</div>
+        <div class="bloco" onclick="openModal('amigos')">Amigos 💞</div>
+        <div class="bloco" onclick="openModal('familia')">Família 🌙</div>
+        <div class="bloco" onclick="openModal('hobbies')">Hobbies 🎨</div>
     </div>
-
 </section>
 
-<!-- ===================== PERFIL ===================== -->
-<section id="perfil" class="tab">
-
-    <h1>Sobre Mim</h1>
-    <div class="perfil-foto"></div>
-
-    <div class="descricao-box">
-        Meu nome é Nicolly e sou uma pessoa cheia de sonhos e vontade de evoluir. 
-        Gosto de aprender, criar e buscar sempre o melhor para mim e para quem está ao meu redor.
-        Valorizo minha família, meus amigos e tudo o que me faz crescer.
-        Estou sempre construindo meu futuro com determinação e fé.
-    </div>
-
-    <button class="btn voltar" onclick="openTab('home')">Voltar</button>
-
-    <h2>Entre em Contato</h2>
-
-    <div class="contatos">
-        <a href="https://wa.me/seu_numero" target="_blank" class="contato-card">WhatsApp</a>
-        <a href="https://instagram.com/seu_usuario" target="_blank" class="contato-card">Instagram</a>
-        <a href="mailto:seuemail@gmail.com" class="contato-card">E-mail</a>
-    </div>
-
-</section>
-
-<!-- 🔹 MODAL DESCRIÇÕES -->
-<div id="modal-bg" class="modal-bg" onclick="closeModal()"></div>
+<!-- 🔹 MODAL -->
+<div id="modal-bg" class="modal-bg"></div>
 
 <div id="modal" class="modal">
-
+    <button class="close" onclick="closeModal()">✕</button>
     <h2 id="modal-title"></h2>
     <p id="modal-text"></p>
-
-    <button class="close" onclick="closeModal()">Fechar</button>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
 
