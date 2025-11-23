@@ -115,7 +115,7 @@ nav button:hover {
 }
 
 .perfil-container {
-    background: white;
+    background: rgb(52, 93, 117);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
@@ -139,7 +139,7 @@ nav button:hover {
 .contato {
     padding: 15px 25px;
     border-radius: 12px;
-    color: white;
+    color: rgb(34, 153, 196);
     font-size: 18px;
     text-decoration: none;
     display: block;
