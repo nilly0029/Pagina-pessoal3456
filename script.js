@@ -1,40 +1,69 @@
-const blockData = {
-  "Familia": document.getElementById('familia-desc').textContent,
-  "Hobbies": document.getElementById('hobbies-desc').textContent,
-  "Amigos": document.getElementById('amigos-desc').textContent,
-  "Sonhos": document.getElementById('sonhos-desc').textContent
+const descriptions = {
+    familia: `
+        <div class="text-gray-700">
+            <h3 class="text-xl font-semibold text-pink-600 mb-2 flex items-center"><i class="fas fa-heart mr-2"></i> Família</h3>
+            <p>Eu moro com a minha mãe e com o meu irmão...</p>
+        </div>
+    `,
+    hobbies: `
+        <div class="text-gray-700">
+            <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center"><i class="fas fa-palette mr-2"></i> Hobbies</h3>
+            <p>Eu gosto de ler livros principalmente de fantasia...</p>
+        </div>
+    `,
+    amigos: `
+        <div class="text-gray-700">
+            <h3 class="text-xl font-semibold text-purple-600 mb-2 flex items-center"><i class="fas fa-users mr-2"></i> Meus Amigos</h3>
+            <p>Meus amigos são pessoas incríveis...</p>
+        </div>
+    `,
+    sonhos: `
+        <div class="text-gray-700">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center"><i class="fas fa-globe-americas mr-2"></i> Meus Sonhos</h3>
+            <p>Sempre sonhei em fazer intercâmbio e viajar pelo mundo...</p>
+        </div>
+    `
 };
 
-function showPage(pageName) {
-  const pages = document.querySelectorAll('.page');
-  const navBtns = document.querySelectorAll('.nav-btn');
-
-  pages.forEach(page => page.classList.remove('active'));
-  navBtns.forEach(btn => btn.classList.remove('active'));
-
-  document.getElementById(pageName).classList.add('active');
-  event.target.classList.add('active');
+function showDescription(key) {
+    const descriptionArea = document.getElementById('description-area');
+    if (descriptions[key]) {
+        descriptionArea.style.opacity = '0';
+        setTimeout(() => {
+            descriptionArea.innerHTML = descriptions[key];
+            descriptionArea.style.opacity = '1';
+        }, 150);
+    }
 }
 
-function toggleBlock(block) {
-  const title = block.querySelector('h3').textContent;
-  openModal(title);
+function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+        tab.style.display = 'none';
+    });
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('text-indigo-600', 'hover:bg-indigo-50');
+        btn.classList.add('text-gray-600');
+    });
+
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) {
+        activeTab.style.display = 'block';
+        void activeTab.offsetWidth;
+        activeTab.classList.add('active');
+    }
+
+    const activeNavButton = document.getElementById('nav-' + tabId);
+    if (activeNavButton) {
+        activeNavButton.classList.remove('text-gray-600');
+        activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openModal(title) {
-  let modal = document.createElement('div');
-  modal.classList.add('modal');
-  modal.innerHTML = `
-    <div class="modal-content">
-      <button class="modal-close">&times;</button>
-      <h3>${title}</h3>
-      <p>${blockData[title]}</p>
-    </div>
-  `;
-  document.body.appendChild(modal);
-  modal.style.display = 'flex';
+window.onload = () => {
+    showTab('home');
+};
 
-  modal.querySelector('.modal-close').onclick = () => {
-    document.body.removeChild(modal);
-  };
-}
