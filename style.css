@@ -57,7 +57,7 @@ body{
   background: var(--glass);
   border-radius:14px;
   border:1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 12px 36px rgba(15,8,40,0.06);
+  box-shadow: 0 12px 36px rgba(60, 33, 156, 0.06);
 }
 .profile-photo{ width:96px; height:96px; border-radius:14px; object-fit:cover; border:3px solid rgba(255,255,255,0.9); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 .hero-text .name{ margin:0; font-family: "Caveat", cursive; font-size:26px; color:#402b62; }
