@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicolly - Portfolio</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
+<div class="background"></div>
+
 <header class="navbar">
     <h1 class="logo">Nicolly</h1>
     <nav>
@@ -19,78 +18,68 @@
     </nav>
 </header>
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 <section id="home" class="tab active">
 
     <div class="perfil-card">
-        <img src="SUA_IMAGEM_AQUI" class="foto-perfil">
+        <img src="SUA_IMAGEM_AQUI" class="foto">
         <div>
             <h2 class="nome">Nicolly Domingues</h2>
             <button class="btn" onclick="openTab('perfil')">Saiba Mais</button>
         </div>
     </div>
 
-    <h2 class="titulo">Sobre Mim</h2>
+    <h2 class="subtitulo">Sobre Mim</h2>
 
-    <!-- Blocos -->
-    <div class="grid">
-
-        <div class="bloco" onclick="toggleDesc('familia')">
+    <div class="cards">
+        <div class="card" onclick="toggleDesc('familia')">
             <h3>Família</h3>
-            <p id="familia" class="desc">
-                Eu moro com a minha mãe e com o meu irmão, que são minha base e o meu maior apoio.
+            <p id="familia" class="descricao">
+                Eu moro com minha mãe e meu irmão, que são meu maior apoio.
             </p>
         </div>
 
-        <div class="bloco" onclick="toggleDesc('hobbies')">
+        <div class="card" onclick="toggleDesc('hobbies')">
             <h3>Hobbies</h3>
-            <p id="hobbies" class="desc">
-                Eu gosto de ler fantasia, criar coisas com limpador de cachimbo e desenhar.
+            <p id="hobbies" class="descricao">
+                Amo ler fantasia, desenhar e criar coisas com limpador de cachimbo.
             </p>
         </div>
 
-        <div class="bloco" onclick="toggleDesc('amigos')">
+        <div class="card" onclick="toggleDesc('amigos')">
             <h3>Amigos</h3>
-            <p id="amigos" class="desc">
-                Meus amigos me inspiram, me fazem rir e tornam meus dias melhores.
+            <p id="amigos" class="descricao">
+                Me inspiram, me fazem rir e tornam meus dias melhores.
             </p>
         </div>
 
-        <div class="bloco" onclick="toggleDesc('sonhos')">
+        <div class="card" onclick="toggleDesc('sonhos')">
             <h3>Sonhos</h3>
-            <p id="sonhos" class="desc">
+            <p id="sonhos" class="descricao">
                 Quero viajar pelo mundo, conhecer culturas e viver novas experiências.
             </p>
         </div>
-
     </div>
 
 </section>
 
-<!-- ================= PERFIL ================= -->
+<!-- PERFIL -->
 <section id="perfil" class="tab">
 
     <button class="btn-voltar" onclick="openTab('home')">← Voltar</button>
 
-    <div class="perfil-container">
-        <img src="SUA_IMAGEM_AQUI" class="foto-perfil">
-        <p class="texto-perfil">
+    <div class="box-perfil">
+        <img src="SUA_IMAGEM_AQUI" class="foto-grande">
+        <p class="bio">
             Meu nome é Nicolly e sou uma pessoa cheia de sonhos e vontade de evoluir.
             Gosto de aprender, criar e buscar sempre o melhor para mim e para quem está ao meu redor.
+            Valorizo minha família, meus amigos e tudo o que me faz crescer.
+            Estou sempre construindo meu futuro com determinação e fé.
         </p>
-    </div>
-
-    <h2 class="titulo">Entre em Contato</h2>
-
-    <div class="contatos">
-        <a class="contato whatsapp" href="https://wa.me/SEU_NUMERO" target="_blank">Whatsapp</a>
-        <a class="contato instagram" href="https://instagram.com/SEU_USER" target="_blank">Instagram</a>
-        <a class="contato email" href="mailto:SEU_EMAIL" target="_blank">Email</a>
     </div>
 
 </section>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>

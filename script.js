@@ -1,15 +1,11 @@
-function openTab(tabName) {
-    document.querySelectorAll(".tab").forEach(section => {
-        section.classList.remove("active");
-    });
-
-    document.getElementById(tabName).classList.add("active");
+function openTab(tab) {
+    document.querySelectorAll(".tab").forEach(el => el.classList.remove("active"));
+    document.getElementById(tab).classList.add("active");
 }
 
 function toggleDesc(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
+    const desc = document.getElementById(id);
+    desc.style.display = desc.style.display === "block" ? "none" : "block";
 }
-
 
 

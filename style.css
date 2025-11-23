@@ -1,155 +1,116 @@
-/* Geral */
+/* Fundo degradê */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef2ff;
+    font-family: "Poppins", Arial, sans-serif;
+    background: linear-gradient(135deg, #6aa1ff, #c084f5, #ffb6e6);
+    background-size: cover;
+    overflow-x: hidden;
 }
 
-/* Navbar */
+/* Efeito suave de vidro */
+.background {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+/* NAVBAR */
 .navbar {
-    background: white;
+    background: rgba(255, 255, 255, 0.35);
+    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
-    padding: 15px 40px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 0 0 25px 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav button {
-    background: none;
+button {
     border: none;
-    font-size: 16px;
-    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: white;
     cursor: pointer;
     transition: .3s;
 }
-
-nav button:hover {
-    color: #4d4df5;
+button:hover {
+    background: #d9c6ff;
 }
 
 /* Tabs */
-.tab {
-    display: none;
-    padding: 40px;
-}
+.tab { display: none; padding: 50px; }
+.tab.active { display: block; }
 
-.active {
-    display: block;
-}
-
-/* Sessão principal */
+/* Card principal */
 .perfil-card {
     background: white;
-    padding: 30px;
-    border-radius: 20px;
+    padding: 35px;
+    border-radius: 25px;
+    max-width: 750px;
+    margin: auto;
     display: flex;
-    gap: 30px;
     align-items: center;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    gap: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-.foto-perfil {
-    width: 140px;
-    height: 140px;
+/* Foto */
+.foto, .foto-grande {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    background: #d8c8ff;
     object-fit: cover;
+    box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
 }
 
-.nome {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.btn {
-    background: #4d4df5;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-/* Blocos */
-.grid {
+/* Cards interativos */
+.cards {
     margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+    max-width: 800px;
+    margin-inline: auto;
 }
 
-.bloco {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
+.card {
+    background: rgba(255,255,255,0.6);
+    padding: 30px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: .3s;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: 0.25s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
 }
-
-.bloco:hover {
+.card:hover {
     transform: scale(1.05);
+    background: rgba(255,255,255,0.85);
 }
 
-.desc {
+.descricao {
     display: none;
     margin-top: 10px;
     color: #444;
-    line-height: 1.4rem;
 }
 
-/* Perfil */
-.btn-voltar {
-    background: #ddd;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-}
-
-.perfil-container {
-    background: rgb(52, 93, 117);
+/* Aba Perfil */
+.box-perfil {
+    background: white;
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 25px;
+    max-width: 800px;
+    margin: auto;
     text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.bio {
     margin-top: 20px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-}
-
-.texto-perfil {
-    width: 70%;
-    margin: 25px auto;
     font-size: 18px;
-}
-
-/* Contatos */
-.contatos {
-    margin-top: 40px;
-    display: flex;
-    gap: 20px;
-}
-
-.contato {
-    padding: 15px 25px;
-    border-radius: 12px;
-    color: rgb(34, 153, 196);
-    font-size: 18px;
-    text-decoration: none;
-    display: block;
-    transition: .3s;
-}
-
-.whatsapp { background: #25d366; }
-.instagram { background: #d62976; }
-.email { background: #325dff; }
-
-.contato:hover {
-    opacity: .8;
+    color: #444;
+    line-height: 1.6;
 }
