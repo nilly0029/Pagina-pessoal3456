@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolly - Página Pessoal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nicolly — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<section class="bloco-section">
-    <h2 class="titulo-area">Coisas que fazem parte de mim ✨</h2>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="brand">Nicolly</div>
+    <nav class="nav-buttons">
+      <button class="nav-btn active" data-target="home">Home</button>
+      <button class="nav-btn" data-target="perfil">Perfil</button>
+    </nav>
+  </header>
 
-    <div class="grid-blocos">
-        <div class="bloco" onclick="openModal('sonhos')">Sonhos ✨</div>
-        <div class="bloco" onclick="openModal('amigos')">Amigos 💞</div>
-        <div class="bloco" onclick="openModal('familia')">Família 🌙</div>
-        <div class="bloco" onclick="openModal('hobbies')">Hobbies 🎨</div>
-    </div>
-</section>
+  <!-- HOME -->
+  <main id="home" class="page active">
+    <section class="hero">
+      <img class="profile-photo" src="/mnt/data/Captura de tela 2025-11-17 175125.png" alt="Foto de Nicolly">
+      <div class="hero-text">
+        <h1 class="name">Nicolly Domingues</h1>
+        <p class="tagline">sonhos • criação • carinho ✨</p>
+        <button class="cta" data-target="perfil">Saiba mais</button>
+      </div>
+    </section>
 
-<!-- 🔹 MODAL -->
-<div id="modal-bg" class="modal-bg"></div>
+    <section class="blocks-wrapper">
+      <!-- 4 blocos lado a lado estilo scrapbook -->
+      <div class="block" onclick="openModal('familia')">Família 🌙</div>
+      <div class="block" onclick="openModal('hobbies')">Hobbies 🎨</div>
+      <div class="block" onclick="openModal('amigos')">Amigos 💕</div>
+      <div class="block" onclick="openModal('sonhos')">Sonhos ✈️</div>
+    </section>
+  </main>
 
-<div id="modal" class="modal">
-    <button class="close" onclick="closeModal()">✕</button>
-    <h2 id="modal-title"></h2>
-    <p id="modal-text"></p>
-</div>
+  <!-- PERFIL -->
+  <main id="perfil" class="page">
+    <section class="perfil-top">
+      <button class="back" data-target="home">← Voltar</button>
+      <img class="profile-photo-large" src="/mnt/data/Captura de tela 2025-11-17 175125.png" alt="Foto de Nicolly">
+      <div class="bio">
+        <p>
+          Meu nome é <strong>Nicolly</strong> — sou cheia de sonhos e vontade de evoluir. Gosto de aprender,
+          criar e buscar sempre o melhor. Valorizo minha família, meus amigos e tudo que me faz crescer.
+          Construo meu futuro com determinação e fé.
+        </p>
+      </div>
+    </section>
 
-<script src="script.js"></script>
+    <section class="contato-section">
+      <h3>Entre em contato</h3>
+      <div class="contatos">
+        <a class="contact" href="https://wa.me/seu_numero" target="_blank">WhatsApp</a>
+        <a class="contact" href="https://instagram.com/seu_usuario" target="_blank">Instagram</a>
+        <a class="contact" href="mailto:seuemail@exemplo.com">Email</a>
+      </div>
+    </section>
+  </main>
 
+  <!-- MODAL central com X -->
+  <div id="modal-bg" class="modal-bg" onclick="closeModal()"></div>
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Fechar" onclick="closeModal()">✕</button>
+    <h2 id="modal-title" class="modal-title"></h2>
+    <p id="modal-body" class="modal-body"></p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
