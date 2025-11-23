@@ -1,34 +1,155 @@
-/* Fonte padrão */
+/* Geral */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f7f7f7;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2ff;
 }
 
-/* Transição */
-.view-content {
-    transition: opacity 0.3s ease-in-out;
+/* Navbar */
+.navbar {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
 }
 
-/* Cores */
-.primary-color-bg {
-    background-color: #4f46e5;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.primary-color-text {
-    color: #4f46e5;
-}
-
-.primary-color-hover:hover {
-    background-color: #4338ca;
-}
-
-/* Ícones */
-.icon-block {
-    transition: all 0.3s ease;
+nav button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-left: 20px;
     cursor: pointer;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+    transition: .3s;
 }
 
-.icon-block:hover {
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+nav button:hover {
+    color: #4d4df5;
+}
+
+/* Tabs */
+.tab {
+    display: none;
+    padding: 40px;
+}
+
+.active {
+    display: block;
+}
+
+/* Sessão principal */
+.perfil-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.foto-perfil {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nome {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.btn {
+    background: #4d4df5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Blocos */
+.grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.bloco {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.bloco:hover {
+    transform: scale(1.05);
+}
+
+.desc {
+    display: none;
+    margin-top: 10px;
+    color: #444;
+    line-height: 1.4rem;
+}
+
+/* Perfil */
+.btn-voltar {
+    background: #ddd;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.perfil-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.texto-perfil {
+    width: 70%;
+    margin: 25px auto;
+    font-size: 18px;
+}
+
+/* Contatos */
+.contatos {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.contato {
+    padding: 15px 25px;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    transition: .3s;
+}
+
+.whatsapp { background: #25d366; }
+.instagram { background: #d62976; }
+.email { background: #325dff; }
+
+.contato:hover {
+    opacity: .8;
 }
