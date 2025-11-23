@@ -1,69 +1,93 @@
-const descriptions = {
-    familia: `
-        <div class="text-gray-700">
-            <h3 class="text-xl font-semibold text-pink-600 mb-2 flex items-center"><i class="fas fa-heart mr-2"></i> Família</h3>
-            <p>Eu moro com a minha mãe e com o meu irmão...</p>
-        </div>
-    `,
-    hobbies: `
-        <div class="text-gray-700">
-            <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center"><i class="fas fa-palette mr-2"></i> Hobbies</h3>
-            <p>Eu gosto de ler livros principalmente de fantasia...</p>
-        </div>
-    `,
-    amigos: `
-        <div class="text-gray-700">
-            <h3 class="text-xl font-semibold text-purple-600 mb-2 flex items-center"><i class="fas fa-users mr-2"></i> Meus Amigos</h3>
-            <p>Meus amigos são pessoas incríveis...</p>
-        </div>
-    `,
-    sonhos: `
-        <div class="text-gray-700">
-            <h3 class="text-xl font-semibold text-indigo-600 mb-2 flex items-center"><i class="fas fa-globe-americas mr-2"></i> Meus Sonhos</h3>
-            <p>Sempre sonhei em fazer intercâmbio e viajar pelo mundo...</p>
-        </div>
-    `
-};
+const blockContents = [
+    {
+        title: "Família",
+        icon: "home",
+        color: "bg-blue-100 border-blue-400 text-blue-800",
+        description: "Eu moro com a minha mãe e com o meu irmão..."
+    },
+    {
+        title: "Hobbies",
+        icon: "book-open",
+        color: "bg-green-100 border-green-400 text-green-800",
+        description: "Eu gosto de ler livros principalmente de fantasia..."
+    },
+    {
+        title: "Amigos",
+        icon: "users",
+        color: "bg-yellow-100 border-yellow-400 text-yellow-800",
+        description: "Meus amigos são pessoas incríveis..."
+    },
+    {
+        title: "Sonhos",
+        icon: "globe",
+        color: "bg-purple-100 border-purple-400 text-purple-800",
+        description: "Sempre sonhei em fazer intercâmbio..."
+    }
+];
 
-function showDescription(key) {
+let activeBlock = null;
+
+function renderInteractiveBlocks() {
+    const container = document.getElementById('interactive-blocks');
+    container.innerHTML = blockContents.map((content, index) => `
+        <div 
+            id="block-${index}" 
+            class="block-card p-6 rounded-xl border-2 ${content.color} icon-block"
+            onclick="toggleDescription(${index}, '${content.title}')"
+        >
+            <i data-lucide="${content.icon}" class="w-8 h-8 mb-2"></i>
+            <h3 class="text-xl font-bold">${content.title}</h3>
+        </div>
+    `).join('');
+
+    lucide.createIcons();
+}
+
+function toggleDescription(index, title) {
     const descriptionArea = document.getElementById('description-area');
-    if (descriptions[key]) {
-        descriptionArea.style.opacity = '0';
-        setTimeout(() => {
-            descriptionArea.innerHTML = descriptions[key];
-            descriptionArea.style.opacity = '1';
-        }, 150);
+    const newContent = blockContents[index];
+    const currentBlockElement = document.getElementById(`block-${index}`);
+
+    if (activeBlock === index) {
+        descriptionArea.innerHTML = '';
+        currentBlockElement.classList.remove('ring-4', 'ring-offset-2', 'ring-indigo-400', 'shadow-2xl');
+        activeBlock = null;
+        return;
     }
+
+    if (activeBlock !== null) {
+        document.getElementById(`block-${activeBlock}`)?.classList.remove('ring-4', 'ring-offset-2', 'ring-indigo-400', 'shadow-2xl');
+    }
+
+    descriptionArea.innerHTML = `
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-2xl border-t-4 border-indigo-600">
+            <h3 class="text-2xl font-bold primary-color-text mb-4">${title}</h3>
+            <p class="text-gray-700">${newContent.description}</p>
+        </div>
+    `;
+
+    currentBlockElement.classList.add('ring-4', 'ring-offset-2', 'ring-indigo-400', 'shadow-2xl');
+    activeBlock = index;
 }
 
-function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-        tab.style.display = 'none';
+function changeView(viewName) {
+    const views = ['home', 'perfil'];
+    views.forEach(view => {
+        const element = document.getElementById(`${view}-view`);
+        const navButton = document.getElementById(`nav-${view}`);
+
+        if (view === viewName) {
+            element.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            element.classList.add('hidden');
+        }
     });
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('text-indigo-600', 'hover:bg-indigo-50');
-        btn.classList.add('text-gray-600');
-    });
-
-    const activeTab = document.getElementById(tabId);
-    if (activeTab) {
-        activeTab.style.display = 'block';
-        void activeTab.offsetWidth;
-        activeTab.classList.add('active');
-    }
-
-    const activeNavButton = document.getElementById('nav-' + tabId);
-    if (activeNavButton) {
-        activeNavButton.classList.remove('text-gray-600');
-        activeNavButton.classList.add('text-indigo-600', 'hover:bg-indigo-50');
-    }
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-window.onload = () => {
-    showTab('home');
+window.onload = function() {
+    renderInteractiveBlocks();
+    changeView('home');
 };
+
 
