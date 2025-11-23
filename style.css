@@ -113,7 +113,7 @@ body{
 .modal-bg{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.36); backdrop-filter: blur(6px); z-index:80; }
 .modal{ display:none; position:fixed; left:50%; top:50%; transform: translate(-50%,-50%); width:min(640px,88%); background:var(--white); border-radius:16px; padding:22px 26px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); z-index:90; }
 .modal-title{ font-family:"Caveat", cursive; font-size:22px; margin:0 0 10px; color:#3b2e6a; text-transform:capitalize; }
-.modal-body{ margin:0; color:#5a4f72; line-height:1.6; font-size:15px; }
+.modal-body{ margin:0; color:#090610; line-height:1.6; font-size:15px; }
 
 /* X close button */
 .modal-close{ position:absolute; right:18px; top:14px; border:none; background:transparent; font-size:20px; cursor:pointer; color:#7a63cf; padding:6px; border-radius:8px; }

@@ -1,9 +1,10 @@
 // Conteúdo das descrições com escrita estética
 const texts = {
-  familia: "Minha família é meu porto: amor que sustenta e aconchega. Crescemos juntos, rimos, choramos e aprendemos — e é esse laço que me dá força.",
-  hobbies: "Desenhar, ler fantasia e criar com as mãos são pequenos rituais que acalmam, inspiram e transformam ideias em cor e forma.",
-  amigos: "Amigos são constelações na minha vida: cada presença ilumina e faz o caminho mais leve. Sou imensamente grata por eles.",
-  sonhos: "Sonhar é traçar mapas — quero intercâmbio, viagens que transformem, novas línguas e memórias que ampliem meus horizontes."
+  familia: 'Eu moro com a minha mãe e com o meu irmão, que são minha base e o meu maior apoio. A gente passa por muita coisa juntos, e é essa união que me ajuda a continuar crescendo cada vez mais.',
+  hobbies: 'Eu gosto de ler livros principalmente de fantasia. Recentemente comecei a criar coisas com limpador de cachimbo virou uma forma divertida de soltar a criatividade. Também estou voltando a desenhar, um hobby que sempre me trouxe calma e me ajudou a me expressar.',
+  amigos: 'Meus amigos são pessoas incríveis. Cada um deles me inspira de um jeito diferente, e sou muito grata por ter por perto pessoas que me apoiam, me fazem rir e tornam os meus dias melhores .',
+  sonhos: 'Sempre sonhei em fazer intercâmbio e viajar pelo mundo Quero conhecer novas culturas, aprender idiomas e viver experiências que me ajudem a crescer como pessoa.'
+
 };
 
 // Navegação SPA (Home / Perfil)
